@@ -26,16 +26,7 @@ const initValues = {
 };
 
 function Form() {
-  const {
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values,
-    errors,
-    touched,
-    isValid,
-    dirty,
-  } = useFormik({
+  const formik = useFormik({
     initialValues: {
       name: "",
       phone: "",
@@ -49,18 +40,18 @@ function Form() {
   });
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <InputWrapper>
         <input
           type="text"
           name="name"
           placeholder="Name"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        {touched.name && errors.name ? (
-          <div className="error">{errors.name}</div>
+        {formik.touched.name && formik.errors.name ? (
+          <div className="error">{formik.errors.name}</div>
         ) : null}
       </InputWrapper>
 
@@ -69,12 +60,12 @@ function Form() {
           type="phone"
           name="phone"
           placeholder="Phone"
-          value={values.phone}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.phone}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        {touched.phone && errors.phone ? (
-          <div className="error">{errors.phone}</div>
+        {formik.touched.phone && formik.errors.phone ? (
+          <div className="error">{formik.errors.phone}</div>
         ) : null}
       </InputWrapper>
 
@@ -83,16 +74,16 @@ function Form() {
           type="email"
           name="email"
           placeholder="Email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        {touched.email && errors.email ? (
-          <div className="error">{errors.email}</div>
+        {formik.touched.email && formik.errors.email ? (
+          <div className="error">{formik.errors.email}</div>
         ) : null}
       </InputWrapper>
 
-      <button type="submit" disabled={!(isValid && dirty)}>
+      <button type="submit" disabled={!(formik.isValid && formik.dirty)}>
         Submit
       </button>
     </form>
