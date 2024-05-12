@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.8b8c6298.css","mappings":"AAAA,KACE,aAAc,CACd,aACF","sources":["components/form/Form.css"],"sourcesContent":["form {\r\n  margin: 0 auto;\r\n  max-width: 20%;\r\n}\r\n"],"names":[],"sourceRoot":""}
